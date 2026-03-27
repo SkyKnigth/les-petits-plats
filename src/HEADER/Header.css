@@ -1,0 +1,50 @@
+.header {
+  position: relative;
+  height: 420px;
+  background-image: url("/images/fondesktop.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.headerOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.38);
+}
+
+.headerTop,
+.headerCenter {
+  position: relative;
+  z-index: 1;
+}
+
+.headerTop {
+  padding: 32px 48px;
+}
+
+.headerLogo {
+  color: white;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.headerCenter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 24px 56px;
+}
+
+.headerTitle {
+  margin: 0 0 32px;
+  text-align: center;
+  color: var(--yellow);
+  font-size: 42px;
+  line-height: 1.15;
+  font-weight: 800;
+  text-transform: uppercase;
+}
