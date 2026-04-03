@@ -7,10 +7,9 @@ export default function NotFound() {
       <h1 className="notFoundTitle">404 :(</h1>
 
       <p className="notFoundText">
-        La recette demandée est introuvable.
+        La page que vous demandez est introuvable.
       </p>
-
-
+      
     </main>
   );
 }
