@@ -3,48 +3,41 @@ import { cleanText } from "./cleanText";
 export function filterRecipes(recipes, query, selectedFilters) {
   const cleanedQuery = cleanText(query);
 
-  return recipes.filter((recipe) => {
+  const filteredRecipes = recipes.filter((recipe) => {
     const recipeName = cleanText(recipe.name);
     const recipeDescription = cleanText(recipe.description);
-    const recipeIngredients = recipe.ingredients
-      .map((ingredient) => cleanText(ingredient.ingredient))
-      .join(" ");
+    const recipeIngredients = recipe.ingredients.map((ingredient) =>
+      cleanText(ingredient.ingredient)
+    );
+    const recipeIngredientsText = recipeIngredients.join(" ");
+    const recipeAppliance = cleanText(recipe.appliance);
+    const recipeUstensils = recipe.ustensils.map((ustensil) =>
+      cleanText(ustensil)
+    );
 
     const matchesMainSearch =
       cleanedQuery.length < 3 ||
       recipeName.includes(cleanedQuery) ||
       recipeDescription.includes(cleanedQuery) ||
-      recipeIngredients.includes(cleanedQuery);
+      recipeIngredientsText.includes(cleanedQuery);
 
-    const recipeIngredientNames = recipe.ingredients.map((ingredient) =>
-      cleanText(ingredient.ingredient)
-    );
+    const matchesFilters =
+      selectedFilters.ingredients.every((tag) =>
+        recipeIngredients.includes(cleanText(tag))
+      ) &&
+      selectedFilters.appliances.every(
+        (tag) => recipeAppliance === cleanText(tag)
+      ) &&
+      selectedFilters.ustensils.every((tag) =>
+        recipeUstensils.includes(cleanText(tag))
+      );
 
-    const recipeAppliance = cleanText(recipe.appliance);
+    const matchesRecipe = matchesMainSearch && matchesFilters;
 
-    const recipeUstensils = recipe.ustensils.map((ustensil) =>
-      cleanText(ustensil)
-    );
-
-    const matchesIngredients = selectedFilters.ingredients.every((tag) =>
-      recipeIngredientNames.includes(cleanText(tag))
-    );
-
-    const matchesAppliances = selectedFilters.appliances.every(
-      (tag) => recipeAppliance === cleanText(tag)
-    );
-
-    const matchesUstensils = selectedFilters.ustensils.every((tag) =>
-      recipeUstensils.includes(cleanText(tag))
-    );
-
-    return (
-      matchesMainSearch &&
-      matchesIngredients &&
-      matchesAppliances &&
-      matchesUstensils
-    );
+    return matchesRecipe;
   });
+
+  return filteredRecipes;
 }
 
 export function getAvailableFilters(recipes, selectedFilters) {
@@ -64,21 +57,15 @@ export function getAvailableFilters(recipes, selectedFilters) {
     });
   });
 
-  const removeSelected = (items, selectedItems) => {
-    return [...items].filter(
-      (item) => !selectedItems.includes(item)
-    );
-  };
+  const removeSelected = (items, selectedItems) =>
+    [...items].filter((item) => !selectedItems.includes(item));
 
   return {
-    ingredients: removeSelected(ingredientsSet, selectedFilters.ingredients).sort(
-      (a, b) => a.localeCompare(b)
-    ),
-    appliances: removeSelected(appliancesSet, selectedFilters.appliances).sort(
-      (a, b) => a.localeCompare(b)
-    ),
-    ustensils: removeSelected(ustensilsSet, selectedFilters.ustensils).sort(
-      (a, b) => a.localeCompare(b)
-    ),
+    ingredients: removeSelected(ingredientsSet, selectedFilters.ingredients)
+      .sort((a, b) => a.localeCompare(b)),
+    appliances: removeSelected(appliancesSet, selectedFilters.appliances)
+      .sort((a, b) => a.localeCompare(b)),
+    ustensils: removeSelected(ustensilsSet, selectedFilters.ustensils)
+      .sort((a, b) => a.localeCompare(b)),
   };
 }

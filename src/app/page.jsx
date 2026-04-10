@@ -7,6 +7,7 @@ import Header from "@/HEADER/Header";
 import Filters from "@/FILTERS/Filters";
 import Tags from "@/TAGS/Tags";
 import RecipeCard from "@/RECIPECARD/RecipeCard";
+import Dropdown from "@/RECIPEFILTER/Dropdown";
 import Footer from "@/FOOTER/Footer";
 
 import { createSlug } from "@/utils/createSlug";

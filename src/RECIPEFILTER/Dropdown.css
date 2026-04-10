@@ -1,0 +1,83 @@
+.filterDropdown {
+  position: relative;
+  min-width: 195px;
+}
+
+.filterDropdownButton {
+  width: 100%;
+  height: 56px;
+  padding: 0 18px;
+  border: none;
+  border-radius: 12px;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.filterDropdownChevron {
+  transition: transform 0.2s ease;
+}
+
+.filterDropdown.open .filterDropdownChevron {
+  transform: rotate(180deg);
+}
+
+.filterDropdownPanel {
+  position: absolute;
+  top: 64px;
+  left: 0;
+  width: 100%;
+  background: white;
+  border-radius: 0 0 12px 12px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+  padding: 16px;
+  z-index: 20;
+}
+
+.filterDropdownSearch {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.filterDropdownSearch input {
+  width: 100%;
+  height: 40px;
+  border: 1px solid #c6c6c6;
+  border-radius: 8px;
+  padding: 0 40px 0 12px;
+  outline: none;
+}
+
+.filterDropdownSearch svg {
+  position: absolute;
+  right: 12px;
+  color: #7a7a7a;
+}
+
+.filterDropdownList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.filterDropdownItem {
+  width: 100%;
+  border: none;
+  background: transparent;
+  text-align: left;
+  padding: 10px 0;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.filterDropdownItem:hover {
+  color: #000;
+  font-weight: 600;
+}

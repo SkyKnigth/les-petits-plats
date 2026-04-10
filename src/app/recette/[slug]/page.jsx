@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+
 import recipesData from "@/data/recipes.json";
 import { createSlug } from "@/utils/createSlug";
 import { recipeImagePath } from "@/utils/recipeImagePath";

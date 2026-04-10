@@ -1,21 +1,29 @@
 import "./Filters.css";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
-import {faAngleDown} from "@fortawesome/free-solid-svg-icons";
+import FilterDropdown from "@/RECIPEFILTER/Dropdown";
 
-export default function Filters() {
+export default function Filters({
+  availableFilters,
+  onSelectFilter,
+}) {
   return (
     <div className="filters">
-      <button className="filterButton" type="button" > 
-        Ingrédients 
-      <FontAwesomeIcon icon={faAngleDown} /></button>
+      <FilterDropdown
+        title="Ingrédients"
+        items={availableFilters.ingredients}
+        onSelect={(value) => onSelectFilter("ingredients", value)}
+      />
 
-      <button className="filterButton" type="button">
-        Appareils 
-      <FontAwesomeIcon icon={faAngleDown} /></button>
+      <FilterDropdown
+        title="Appareils"
+        items={availableFilters.appliances}
+        onSelect={(value) => onSelectFilter("appliances", value)}
+      />
 
-      <button className="filterButton" type="button">
-        Ustensiles 
-      <FontAwesomeIcon icon={faAngleDown} /></button>
+      <FilterDropdown
+        title="Ustensiles"
+        items={availableFilters.ustensils}
+        onSelect={(value) => onSelectFilter("ustensils", value)}
+      />
     </div>
   );
 }
