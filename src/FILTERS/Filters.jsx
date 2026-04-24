@@ -1,10 +1,7 @@
 import "./Filters.css";
 import FilterDropdown from "@/RECIPEFILTER/Dropdown";
 
-export default function Filters({
-  availableFilters,
-  onSelectFilter,
-}) {
+export default function Filters({ availableFilters, onSelectFilter }) {
   return (
     <div className="filters">
       <FilterDropdown
