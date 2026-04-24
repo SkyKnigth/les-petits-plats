@@ -1,4 +1,4 @@
-import "Dropdown.css";
+import "./Dropdown.css";
 import { useMemo, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
