@@ -1,6 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import "./Header.css";
+import "@/globals.css";
 import SearchBar from "@/SEARCHBAR/SearchBar";
+
 
 export default function Header({ query, setQuery }) {
   return (

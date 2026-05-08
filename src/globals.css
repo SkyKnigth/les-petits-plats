@@ -48,7 +48,7 @@ input {
 
 .header {
   position: relative;
-  background-image: url("/images/fondesktop.jpg");
+  background-image: url("/images/fondesktop.webp");
   background-size: cover;
   background-position: center;
   height: 620px;
@@ -174,7 +174,7 @@ input {
 .recipeHeader {
   position: relative;
   height: 90px;
-  background-image: url("/images/fondesktop.jpg");
+  background-image: url("/images/fondesktop.webp");
   background-size: cover;
   background-position: center;
   overflow: hidden;
@@ -299,7 +299,7 @@ input {
 .notFound {
   position: relative;
   min-height: calc(100vh - 76px);
-  background-image: url("/images/error.jpg");
+  background-image: url("/images/error.webp");
   background-size: cover;
   background-position: center;
   overflow: hidden;
@@ -452,6 +452,11 @@ input {
   .headerLogo {
     width: 170px;
   }
+
+.headerTitle {
+    font-size: 32px;
+  }
+
 
   .headerCenter {
     justify-content: flex-start;
